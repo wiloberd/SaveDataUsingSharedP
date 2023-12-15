@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserPerfilActivity extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class UserPerfilActivity extends AppCompatActivity {
 
     public  void abreLoginRegister(View view){
         Intent i = new Intent(UserPerfilActivity.this, LoginActivity.class);
+        Toast.makeText(this, "Desconectado com Sucesso", Toast.LENGTH_SHORT).show();
         startActivity(i);
 
     }

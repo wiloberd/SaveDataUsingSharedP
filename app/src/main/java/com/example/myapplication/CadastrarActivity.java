@@ -38,6 +38,11 @@ public class CadastrarActivity extends AppCompatActivity {
         startActivity(home);
     }
 
+    public void abreLogin(View view){
+        Intent login = new Intent(CadastrarActivity.this, LoginActivity.class);
+        startActivity(login);
+    }
+
     public void cadastrarForm(View view){
         this.nomeUsuario = editUsuario.getText().toString();
         this.email = editEmail.getText().toString();

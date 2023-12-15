@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         emailSalvo = memoria.getString("userEmail", "email não foi encontrado na memoria");
         senhaSalvo = memoria.getString("userSenha", "senha não foi encontrado na memoria");
 
-        erroLogin.setText(("Nome usuario: " + userSalvo + " email: " + emailSalvo + " senha: " + senhaSalvo));
+        //erroLogin.setText(("Nome usuario: " + userSalvo + " email: " + emailSalvo + " senha: " + senhaSalvo));
 
 
     }

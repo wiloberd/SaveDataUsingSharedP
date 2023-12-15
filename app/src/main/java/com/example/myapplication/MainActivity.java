@@ -12,9 +12,6 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SharedPreferences mySavedData;
-    private SharedPreferences.Editor mySavedDataEditor;
-
     private Button btnLoginRegister;
 
     private TextView headerText;
@@ -24,22 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-        btnLoginRegister = findViewById(R.id.loginRegister);
-
-        headerText = findViewById(R.id.text1);
-
-        mySavedData = getSharedPreferences("mySavedDataFile", Context.MODE_PRIVATE);
-        mySavedDataEditor = mySavedData.edit();
-
-        if(mySavedData.getBoolean("remUser",false)) {
-            headerText.setText("Olá "+mySavedData.getString("user", "nil")+", Esse é o IFC Camboriú");
-
-        }
-
     }
-
 
 
     public  void abreLoginRegister(View view){
