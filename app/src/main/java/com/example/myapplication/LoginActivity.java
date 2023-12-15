@@ -15,8 +15,8 @@ public class LoginActivity extends AppCompatActivity {
     private String nomeUsuario;
     private String userEmail;
     private String userSenha;
-    private  String userEmailSalvo = "wiloberd10@gmail.com";
-    private String userSenhaSalvo = "123";
+   // private  String userEmailSalvo = "wiloberd10@gmail.com";
+   // private String userSenhaSalvo = "123";
     private EditText inputEmail;
     private  EditText inputSenha;
     private Button btnLogin;
@@ -24,9 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView erroLogin;
     private SharedPreferences memoria;
     private SharedPreferences.Editor editor;
-
-    private String nomeSalvo;
-
+    private String userSalvo, emailSalvo, senhaSalvo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +39,23 @@ public class LoginActivity extends AppCompatActivity {
         erroLogin = findViewById(R.id.erroLoginTextView);
 
        Intent dadosCadastrarForm = getIntent();
-        this.nomeUsuario = dadosCadastrarForm.getStringExtra("usuario");
-        this.userEmail = dadosCadastrarForm.getStringExtra("email");
-        this.userSenha = dadosCadastrarForm.getStringExtra("senha");
+        this.userSalvo = dadosCadastrarForm.getStringExtra("usuario");
+        this.emailSalvo = dadosCadastrarForm.getStringExtra("email");
+        this.senhaSalvo = dadosCadastrarForm.getStringExtra("senha");
         //erroLogin.setText(String.valueOf(dadosCadastrarForm.getStringExtra("senha")));
 
         memoria = getSharedPreferences("arquivoUsuarios", 0);
         editor = memoria.edit();
-        editor.putString("userName", this.nomeUsuario);
+        editor.putString("userName", this.userSalvo);
+        editor.putString("userEmail", this.emailSalvo);
+        editor.putString("userSenha", this.senhaSalvo);
         editor.commit();
 
-        nomeSalvo = memoria.getString("userName", "nenhum dados foi salvo na memoria");
-        erroLogin.setText(("Nome recuperado: " + nomeSalvo));
+        userSalvo = memoria.getString("userName", "nome usuario não foi encontrado na memoria");
+        emailSalvo = memoria.getString("userEmail", "email não foi encontrado na memoria");
+        senhaSalvo = memoria.getString("userSenha", "senha não foi encontrado na memoria");
+
+        erroLogin.setText(("Nome usuario: " + userSalvo + " email: " + emailSalvo + " senha: " + senhaSalvo));
 
 
     }
@@ -61,10 +64,9 @@ public class LoginActivity extends AppCompatActivity {
         this.userEmail  = inputEmail.getText().toString();
         this.userSenha = inputSenha.getText().toString();
 
-
-        if (userEmail.equals(userEmailSalvo) && (userSenha.equals(userSenhaSalvo))){
+        if (userEmail.equals(emailSalvo) && (userSenha.equals(senhaSalvo))){
             Intent perfil = new Intent(LoginActivity.this, UserPerfilActivity.class);
-            perfil.putExtra("nome", "Olá " + this.userSenha +"!");
+            perfil.putExtra("nome", "Olá " + this.userSalvo +"!");
             startActivity(perfil);
         } else{
             erroLogin.setText("Email ou senha invalida " + this.userSenha);
