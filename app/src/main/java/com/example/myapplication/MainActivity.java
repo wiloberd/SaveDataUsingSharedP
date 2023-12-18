@@ -23,13 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public  void abreLoginRegister(View view){
         Intent i = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(i);
-
     }
-
-
 
 }

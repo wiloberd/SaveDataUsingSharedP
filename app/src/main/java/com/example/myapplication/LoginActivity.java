@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private String nomeUsuario;
+    //private String nomeUsuario;
     private String userEmail;
     private String userSenha;
    // private  String userEmailSalvo = "wiloberd10@gmail.com";
@@ -57,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
 
         //erroLogin.setText(("Nome usuario: " + userSalvo + " email: " + emailSalvo + " senha: " + senhaSalvo));
 
-
     }
 
     public void abrePerfil(View view){
@@ -69,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             perfil.putExtra("nome", "Olá " + this.userSalvo +"!");
             startActivity(perfil);
         } else{
-            erroLogin.setText("Email ou senha invalida " + this.userSenha);
+            erroLogin.setText("Email ou senha invalida.");
         }
     }
 

@@ -48,13 +48,19 @@ public class CadastrarActivity extends AppCompatActivity {
         this.email = editEmail.getText().toString();
         this.senha = editSenha.getText().toString();
 
-        Intent home = new Intent(CadastrarActivity.this, LoginActivity.class);
-        home.putExtra("usuario", this.nomeUsuario);
-        home.putExtra("email", this.email);
-        home.putExtra("senha", this.senha);
-        Toast.makeText(this, "enviado para o form " + this.senha + this.email + this.nomeUsuario , Toast.LENGTH_SHORT).show();
+        if (nomeUsuario.equals("") || email.equals("") || senha.equals("")) {
+            Toast.makeText(this, "Todos os campos devem ser." + this.senha + this.email + this.nomeUsuario, Toast.LENGTH_SHORT).show();
+        } else {
 
-       startActivity(home);
+
+            Intent home = new Intent(CadastrarActivity.this, LoginActivity.class);
+            home.putExtra("usuario", this.nomeUsuario);
+            home.putExtra("email", this.email);
+            home.putExtra("senha", this.senha);
+            Toast.makeText(this, "Usuario cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
+
+            startActivity(home);
+        }
     }
 
 }
